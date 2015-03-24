@@ -25,7 +25,7 @@ target_resource_record_set = resource_record_sets.select{|rrs| rrs.name == "#{fu
 
 last_known_ip = target_resource_record_set.resource_records.first.value
 
-if current_public_ip == last_known_ip
+unless current_public_ip == last_known_ip
   change = {
     :action => 'UPSERT',
     :resource_record_set => {
